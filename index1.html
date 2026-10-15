@@ -1,0 +1,791 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusConnect | Student Portal</title>
+  <meta name="description" content="Your all-in-one student digital platform.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<!-- AUTHENTICATION SCREEN -->
+<section class="auth-screen" id="authScreen">
+  <div class="auth-brand">
+    <span class="brand-icon">
+      <i class="fa-solid fa-graduation-cap"></i>
+    </span>
+    <span>Campus<span class="brand-accent">Connect</span></span>
+  </div>
+
+  <div class="auth-layout">
+    <div class="auth-intro">
+      <span class="welcome-tag">YOUR CAMPUS, CONNECTED</span>
+      <h1>Your college life.<br>One digital home.</h1>
+      <p>Access your study materials, manage your profile
+        and make every day on campus count.</p>
+
+      <div class="auth-benefits">
+        <span><i class="fa-solid fa-circle-check"></i>
+          One place for study resources</span>
+        <span><i class="fa-solid fa-circle-check"></i>
+          A personalized student dashboard</span>
+        <span><i class="fa-solid fa-circle-check"></i>
+          Your academic resources, organized</span>
+      </div>
+
+      <div class="auth-decoration" aria-hidden="true">
+        <i class="fa-solid fa-book-open"></i>
+        <i class="fa-solid fa-graduation-cap"></i>
+        <i class="fa-solid fa-star"></i>
+      </div>
+    </div>
+
+    <div class="auth-card">
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab active"
+                data-auth-mode="login">Login</button>
+        <button type="button" class="auth-tab"
+                data-auth-mode="register">Create account</button>
+      </div>
+
+      <h2 id="authTitle">Welcome back!</h2>
+      <p id="authSubtitle">Enter your details to continue.</p>
+
+      <form id="authForm">
+        <div class="form-field register-only" hidden>
+          <label for="registerName">Full name</label>
+          <input id="registerName" name="registerName"
+                 placeholder="Enter your full name"
+                 autocomplete="name">
+        </div>
+
+
+          <label for="authEmail">Email address</label>
+          <input id="authEmail" name="email" type="email"
+                 placeholder="you@example.com"
+                 autocomplete="email" required>
+        </div>
+
+        <div class="form-field">
+          <label for="authPassword">Password</label>
+          <input id="authPassword" name="password"
+                 type="password" minlength="6"
+                 placeholder="At least 6 characters"
+                 autocomplete="current-password" required>
+        </div>
+
+        <div id="registerFields" hidden>
+          <div class="form-field">
+            <label for="registerCollege">College name</label>
+            <input id="registerCollege" placeholder="Your college">
+          </div>
+
+          <div class="form-field">
+            <label for="registerBranch">Branch</label>
+            <select id="registerBranch">
+              <option value="">Select branch</option>
+              <option>CSE</option>
+              <option>CSE - Cyber Security</option>
+              <option>CSE - Data Science</option>
+              <option>IT</option>
+              <option>ECE</option>
+              <option>EEE</option>
+              <option>Mechanical</option>
+              <option>Civil</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="registerYear">Year</label>
+              <select id="registerYear">
+                <option value="">Select year</option>
+                <option>1st Year</option>
+                <option>2nd Year</option>
+                <option>3rd Year</option>
+                <option>4th Year</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="registerSemester">Semester</label>
+              <select id="registerSemester">
+                <option value="">Select semester</option>
+                <option>Semester 1</option>
+                <option>Semester 2</option>
+                <option>Semester 3</option>
+                <option>Semester 4</option>
+                <option>Semester 5</option>
+                <option>Semester 6</option>
+                <option>Semester 7</option>
+                <option>Semester 8</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="primary-btn auth-submit"
+                id="authSubmit">
+          Login to CampusConnect
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <p class="auth-message" id="authMessage"
+           role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="auth-note">
+        Frontend demonstration · Don't use a real password
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <a href="#dashboard" class="brand">
+      <span class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+      <span>Campus<span class="brand-accent">Connect</span></span>
+    </a>
+
+    <p class="menu-label">MAIN MENU</p>
+
+    <nav class="navigation">
+      <a href="#dashboard" class="nav-link active">
+        <i class="fa-solid fa-house"></i><span>Dashboard</span>
+      </a>
+      <a href="#study" class="nav-link">
+        <i class="fa-solid fa-book-open"></i><span>Study Materials</span>
+      </a>
+      <a href="#timetable" class="nav-link">
+        <i class="fa-solid fa-calendar-days"></i><span>Timetable</span>
+      </a>
+      <a href="#assignments" class="nav-link">
+        <i class="fa-solid fa-list-check"></i><span>Assignments</span>
+      </a>
+      <a href="#events" class="nav-link">
+        <i class="fa-solid fa-bullhorn"></i><span>Campus Events</span>
+      </a>
+      <a href="#community" class="nav-link">
+        <i class="fa-solid fa-users"></i><span>Community</span>
+      </a>
+      <a href="#career" class="nav-link">
+        <i class="fa-solid fa-briefcase"></i><span>Career Hub</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="help-card">
+        <div class="help-icon"><i class="fa-solid fa-circle-question"></i></div>
+        <h4>Need some help?</h4>
+        <p>Your campus journey, made easier.</p>
+        <a href="#help">Explore help <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <a href="#profile" class="nav-link">
+        <i class="fa-solid fa-user"></i><span>My Profile</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content" id="dashboard">
+
+    <header class="topbar">
+      <button class="icon-btn mobile-menu" id="menuToggle"
+              aria-label="Open navigation" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="breadcrumb">
+        <span>Pages</span><i class="fa-solid fa-chevron-right"></i>
+        <strong id="pageTitle">Dashboard</strong>
+      </div>
+
+      <div class="topbar-actions">
+        <label class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" id="globalSearch"
+                 placeholder="Search anything..." aria-label="Search dashboard">
+          <kbd>/</kbd>
+        </label>
+
+        <button class="icon-btn" id="themeToggle"
+                aria-label="Toggle dark mode" title="Toggle theme">
+          <i class="fa-regular fa-moon"></i>
+        </button>
+
+        <button class="icon-btn notification-btn" id="notificationToggle"
+                aria-label="Notifications" title="Notifications">
+          <i class="fa-regular fa-bell"></i>
+          <span class="notification-dot"></span>
+        </button>
+
+        <a href="#profile" class="top-profile">
+          <span class="avatar">A</span>
+          <span class="profile-info">
+            <strong>Student Name</strong>
+            <small>Student</small>
+          </span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="page-content">
+
+      <!-- Welcome banner -->
+      <section class="welcome-banner searchable">
+        <div class="welcome-text">
+          <span class="welcome-tag"><i class="fa-solid fa-sparkles"></i> YOUR STUDENT SPACE</span>
+          <h1 id="welcomeGreeting">Hey, Student! 👋</h1>
+          <p>Your future starts with what you do today. Let's make it count.</p>
+          <a href="#study" class="primary-btn">
+            Explore study zone <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="welcome-art" aria-hidden="true">
+          <div class="art-circle circle-one"></div>
+          <div class="art-circle circle-two"></div>
+          <i class="fa-solid fa-graduation-cap graduation-art"></i>
+          <i class="fa-solid fa-book-open book-art"></i>
+          <i class="fa-solid fa-star star-art"></i>
+        </div>
+      </section>
+
+      <!-- Overview cards -->
+      <section class="section-block searchable">
+        <div class="section-heading">
+          <div>
+            <h2>Your overview</h2>
+            <p>Here's what's happening with your studies.</p>
+          </div>
+          <span class="today-label"><i class="fa-regular fa-calendar"></i>
+            <span id="currentDate">Today</span>
+          </span>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-top">
+              <span class="stat-icon purple"><i class="fa-solid fa-book-open"></i></span>
+              <span class="stat-caption">Learning</span>
+            </div>
+            <h3>06 <small>Subjects</small></h3>
+            <p>Keep up your learning streak!</p>
+            <a href="#study" class="card-link">View subjects <i class="fa-solid fa-arrow-right"></i></a>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-top">
+              <span class="stat-icon orange"><i class="fa-solid fa-list-check"></i></span>
+              <span class="stat-caption">Pending work</span>
+            </div>
+            <h3 id="pendingCount">03 <small>Tasks</small></h3>
+            <p>Small steps lead to big results.</p>
+            <a href="#assignments" class="card-link">View tasks <i class="fa-solid fa-arrow-right"></i></a>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-top">
+              <span class="stat-icon green"><i class="fa-solid fa-calendar-check"></i></span>
+              <span class="stat-caption">Upcoming</span>
+            </div>
+            <h3>02 <small>Events</small></h3>
+            <p>Make time for campus life.</p>
+            <a href="#events" class="card-link">Explore events <i class="fa-solid fa-arrow-right"></i></a>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-top">
+              <span class="stat-icon blue"><i class="fa-solid fa-briefcase"></i></span>
+              <span class="stat-caption">Career</span>
+            </div>
+            <h3>04 <small>Resources</small></h3>
+            <p>Build skills for your future.</p>
+            <a href="#career" class="card-link">Explore careers <i class="fa-solid fa-arrow-right"></i></a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Schedule and assignments -->
+      <div class="content-grid">
+
+        <section class="panel searchable" id="timetable">
+          <div class="panel-heading">
+            <div>
+              <h2>Today's schedule</h2>
+              <p>Your classes at a glance.</p>
+            </div>
+            <a href="#timetable" class="text-link">Full timetable</a>
+          </div>
+
+          <div class="schedule-list">
+            <article class="schedule-item">
+              <div class="time-box"><strong>09:00</strong><small>AM</small></div>
+              <div class="schedule-line purple-line"></div>
+              <div class="schedule-details">
+                <h4>Data structures & Algorithms</h4>
+                <p><i class="fa-solid fa-location-dot"></i> Room 204 · Block A</p>
+              </div>
+              <span class="subject-tag purple-tag">CSE</span>
+            </article>
+
+            <article class="schedule-item">
+              <div class="time-box"><strong>10:30</strong><small>AM</small></div>
+              <div class="schedule-line blue-line"></div>
+              <div class="schedule-details">
+                <h4>Database Management</h4>
+                <p><i class="fa-solid fa-location-dot"></i> Lab 02 · Block B</p>
+              </div>
+              <span class="subject-tag blue-tag">DBMS</span>
+            </article>
+
+            <article class="schedule-item">
+              <div class="time-box"><strong>01:30</strong><small>PM</small></div>
+              <div class="schedule-line orange-line"></div>
+              <div class="schedule-details">
+                <h4>Web Development</h4>
+                <p><i class="fa-solid fa-location-dot"></i> Lab 01 · Block A</p>
+              </div>
+              <span class="subject-tag orange-tag">WEB</span>
+            </article>
+
+            <article class="schedule-item">
+              <div class="time-box"><strong>03:00</strong><small>PM</small></div>
+              <div class="schedule-line green-line"></div>
+              <div class="schedule-details">
+                <h4>Operating Systems</h4>
+                <p><i class="fa-solid fa-location-dot"></i> Room 105 · Block C</p>
+              </div>
+              <span class="subject-tag green-tag">OS</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel searchable" id="assignments">
+          <div class="panel-heading">
+            <div>
+              <h2>My assignments</h2>
+              <p>You've got this. One task at a time.</p>
+            </div>
+            <span class="task-count" id="taskCount">3 tasks</span>
+          </div>
+
+          <div class="assignment-list">
+            <label class="assignment-item">
+              <input type="checkbox" class="task-check">
+              <span class="custom-check"></span>
+              <span class="assignment-details">
+                <strong>Data structures Practice Problems</strong>
+                <small>Data structures & Algorithms · Unit 3</small>
+                <span class="due-date urgent"><i class="fa-regular fa-clock"></i> Due today</span>
+              </span>
+              <span class="priority high">High</span>
+            </label>
+
+            <label class="assignment-item">
+              <input type="checkbox" class="task-check">
+              <span class="custom-check"></span>
+              <span class="assignment-details">
+                <strong>Build a Landing Page</strong>
+                <small>Web Development · Project</small>
+                <span class="due-date"><i class="fa-regular fa-clock"></i> Due tomorrow</span>
+              </span>
+              <span class="priority medium">Medium</span>
+            </label>
+
+            <label class="assignment-item">
+              <input type="checkbox" class="task-check">
+              <span class="custom-check"></span>
+              <span class="assignment-details">
+                <strong>DBMS Notes</strong>
+                <small>Database Management · Unit 2</small>
+                <span class="due-date"><i class="fa-regular fa-clock"></i> Due Friday</span>
+              </span>
+              <span class="priority low">Low</span>
+            </label>
+          </div>
+
+          <button class="outline-btn" id="addTaskBtn">
+            <i class="fa-solid fa-plus"></i> Add a task
+          </button>
+        </section>
+      </div>
+
+      <!-- Lower cards -->
+      <div class="content-grid lower-grid">
+
+        <section class="panel searchable" id="events">
+          <div class="panel-heading">
+            <div>
+              <h2>Campus happenings</h2>
+              <p>Don't miss out on the fun.</p>
+            </div>
+            <a href="#events" class="text-link">View all</a>
+          </div>
+
+          <article class="event-card">
+            <div class="event-date">
+              <strong>20</strong><span>OCT</span>
+            </div>
+            <div class="event-info">
+              <span class="event-category">WORKSHOP</span>
+              <h4>Web Development Workshop</h4>
+              <p><i class="fa-regular fa-clock"></i> 10:00 AM · Seminar Hall</p>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square event-arrow"></i>
+          </article>
+
+          <article class="event-card">
+            <div class="event-date event-date-blue">
+              <strong>24</strong><span>OCT</span>
+            </div>
+            <div class="event-info">
+              <span class="event-category blue-category">TECH EVENT</span>
+              <h4>Campus Hackathon</h4>
+              <p><i class="fa-regular fa-clock"></i> 09:30 AM · Innovation Lab</p>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square event-arrow"></i>
+          </article>
+        </section>
+
+        
+<section class="panel searchable extra-section" id="study">
+  <div class="panel-heading">
+    <div>
+      <h2>Study Zone</h2>
+      <p>Your notes, question papers and learning resources.</p>
+    </div>
+    <i class="fa-solid fa-book-open section-large-icon"></i>
+  </div>
+
+  <div class="study-hero">
+    <div>
+      <span>YOUR PERSONAL LIBRARY</span>
+      <h3>Learn at your own pace.</h3>
+      <p>Find the right resource for your next study session.</p>
+    </div>
+    <i class="fa-solid fa-graduation-cap"></i>
+  </div>
+
+  <div class="study-controls">
+    <label class="study-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" id="resourceSearch"
+             placeholder="Search subjects, topics or resources..."
+             aria-label="Search study resources">
+    </label>
+
+    <div class="study-filters">
+      <label>
+        <span>Semester</span>
+        <select id="semesterFilter">
+          <option value="all">All semesters</option>
+          <option value="1">Semester 1</option>
+          <option value="2">Semester 2</option>
+          <option value="3">Semester 3</option>
+          <option value="4">Semester 4</option>
+          <option value="5">Semester 5</option>
+          <option value="6">Semester 6</option>
+          <option value="7">Semester 7</option>
+          <option value="8">Semester 8</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Resource type</span>
+        <select id="typeFilter">
+          <option value="all">All types</option>
+          <option value="notes">Notes</option>
+          <option value="papers">Question papers</option>
+          <option value="practice">Practice</option>
+          <option value="guides">Guides</option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <div class="study-results">
+    <p id="resourceCount" aria-live="polite">Loading resources...</p>
+    <button class="text-link" id="clearFilters" type="button">
+      Clear filters
+    </button>
+  </div>
+
+  <div class="resource-grid" id="resourceGrid">
+
+    <article class="resource-tile"
+      data-semester="3" data-type="notes"
+      data-search="data structures algorithms dsa arrays linked lists stacks queues trees graphs">
+      <div class="resource-tile-top">
+        <span class="resource-icon purple"><i class="fa-solid fa-code"></i></span>
+        <span class="resource-type">NOTES</span>
+      </div>
+      <h3>Data structures & Algorithms</h3>
+      <p>Arrays, linked lists, stacks, queues and trees.</p>
+      <div class="resource-meta"><span>Semester 3</span><span>PDF notes</span></div>
+      <a href="#resource-data-structures" class="resource-action"
+         data-resource="Data Structures & Algorithms">
+        Open resource <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </article>
+
+    <article class="resource-tile"
+      data-semester="3" data-type="notes"
+      data-search="database management systems dbms sql normalization transactions">
+      <div class="resource-tile-top">
+        <span class="resource-icon blue"><i class="fa-solid fa-database"></i></span>
+        <span class="resource-type">NOTES</span>
+      </div>
+      <h3>Database Management Systems</h3>
+      <p>SQL, normalization, transactions and database design.</p>
+      <div class="resource-meta"><span>Semester 3</span><span>PDF notes</span></div>
+      <a href="#resource-dbms" class="resource-action"
+         data-resource="Database Management Systems">
+        Open resource <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </article>
+
+    <article class="resource-tile"
+      data-semester="2" data-type="papers"
+      data-search="java programming previous year question papers oops classes objects inheritance">
+      <div class="resource-tile-top">
+        <span class="resource-icon orange"><i class="fa-brands fa-java"></i></span>
+        <span class="resource-type">QUESTION PAPERS</span>
+      </div>
+      <h3>Java Programming</h3>
+      <p>Practice classes, objects, inheritance and OOP concepts.</p>
+      <div class="resource-meta"><span>Semester 2</span><span>Exam prep</span></div>
+      <a href="#resource-java" class="resource-action"
+         data-resource="Java Programming">
+        Open resource <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </article>
+
+    <article class="resource-tile"
+      data-semester="1" data-type="practice"
+      data-search="python programming practice exercises variables loops functions lists dictionaries">
+      <div class="resource-tile-top">
+        <span class="resource-icon green"><i class="fa-brands fa-python"></i></span>
+        <span class="resource-type">PRACTICE</span>
+      </div>
+      <h3>Python Programming</h3>
+      <p>Variables, loops, functions, lists and dictionaries.</p>
+      <div class="resource-meta"><span>Semester 1</span><span>Exercises</span></div>
+      <a href="#resource-python" class="resource-action"
+         data-resource="Python Programming">
+        Open resource <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </article>
+
+    <article class="resource-tile"
+      data-semester="2" data-type="guides"
+      data-search="web development html css javascript responsive design frontend guide">
+      <div class="resource-tile-top">
+        <span class="resource-icon purple"><i class="fa-solid fa-laptop-code"></i></span>
+        <span class="resource-type">GUIDES</span>
+      </div>
+      <h3>Web Development</h3>
+      <p>HTML, CSS, JavaScript and responsive layouts.</p>
+      <div class="resource-meta"><span>Semester 2</span><span>Learning guide</span></div>
+      <a href="#resource-web" class="resource-action"
+         data-resource="Web Development">
+        Open resource <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </article>
+
+    <article class="resource-tile"
+      data-semester="4" data-type="papers"
+      data-search="operating systems os process scheduling memory management previous year papers">
+      <div class="resource-tile-top">
+        <span class="resource-icon blue"><i class="fa-solid fa-microchip"></i></span>
+        <span class="resource-type">QUESTION PAPERS</span>
+      </div>
+      <h3>Operating Systems</h3>
+      <p>Processes, scheduling, memory and file systems.</p>
+      <div class="resource-meta"><span>Semester 4</span><span>Exam prep</span></div>
+      <a href="#resource-os" class="resource-action"
+         data-resource="Operating Systems">
+        Open resource <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </article>
+  </div>
+
+  <div class="no-resources" id="noResources" hidden>
+    <i class="fa-solid fa-folder-open"></i>
+    <h3>No resources found</h3>
+    <p>Try another search term or change the filters.</p>
+  </div>
+
+  <div class="resource-viewer" id="resourceViewer" hidden>
+    <div class="panel-heading">
+      <div>
+        <h2 id="viewerTitle">Resource details</h2>
+        <p>Study resource preview</p>
+      </div>
+      <button class="icon-btn" id="closeResource"
+              type="button" aria-label="Close resource">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <p id="viewerDescription" class="placeholder-text"></p>
+    <p class="resource-notice">
+      This is a sample resource listing. Add your actual PDF or
+      practice links to make the resource available.
+    </p>
+    <a id="viewerLink" class="primary-btn" href="#study">
+      Open study material
+    </a>
+  </div>
+</section>
+
+      <!-- Other destination sections -->
+      <section class="panel searchable extra-section" id="community">
+        <div class="panel-heading">
+          <div>
+            <h2>Student community</h2>
+            <p>Learn together and share ideas.</p>
+          </div>
+          <i class="fa-solid fa-users section-large-icon"></i>
+        </div>
+        <p class="placeholder-text">Your space for study groups, project ideas, and student discussions.</p>
+        <a href="#community" class="primary-btn" id="communityBtn">Explore community</a>
+      </section>
+
+      <section class="panel searchable extra-section" id="career">
+        <div class="panel-heading">
+          <div>
+            <h2>Career hub</h2>
+            <p>Prepare for your next opportunity.</p>
+          </div>
+          <i class="fa-solid fa-briefcase section-large-icon"></i>
+        </div>
+        <div class="career-chips">
+          <span>Resume building</span><span>Interview prep</span>
+          <span>Coding practice</span><span>Internships</span>
+        </div>
+        <p class="placeholder-text">Explore career resources and build your professional skills.</p>
+      </section>
+
+    
+<section class="panel searchable extra-section" id="profile">
+  <div class="panel-heading">
+    <div>
+      <h2>My Profile</h2>
+      <p>Manage your student information.</p>
+    </div>
+    <i class="fa-solid fa-user section-large-icon"></i>
+  </div>
+
+  <div class="profile-summary">
+    <span class="avatar profile-avatar" id="profileInitials">ST</span>
+    <div>
+      <h3 id="profileDisplayName">Student Name</h3>
+      <p id="profileDisplayBranch">Student details</p>
+    </div>
+  </div>
+
+  <form id="profileForm" class="profile-form">
+    <div class="form-field">
+      <label for="profileName">Full Name</label>
+      <input type="text" id="profileName"
+             placeholder="Enter your full name" required>
+    </div>
+
+    <div class="form-field">
+      <label for="profileEmail">Email Address</label>
+      <input type="email" id="profileEmail" disabled>
+    </div>
+
+    <div class="form-field">
+      <label for="profileCollege">College</label>
+      <input type="text" id="profileCollege"
+             placeholder="Enter your college">
+    </div>
+
+    <div class="form-field">
+      <label for="profileBranch">Branch</label>
+      <select id="profileBranch">
+        <option>CSE</option>
+        <option>CSE - Cyber Security</option>
+        <option>CSE - Data Science</option>
+        <option>IT</option>
+        <option>ECE</option>
+        <option>EEE</option>
+        <option>Mechanical</option>
+        <option>Civil</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label for="profileYear">Year</label>
+        <select id="profileYear">
+          <option>1st Year</option>
+          <option>2nd Year</option>
+          <option>3rd Year</option>
+          <option>4th Year</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="profileSemester">Semester</label>
+        <select id="profileSemester">
+          <option>Semester 1</option>
+          <option>Semester 2</option>
+          <option>Semester 3</option>
+          <option>Semester 4</option>
+          <option>Semester 5</option>
+          <option>Semester 6</option>
+          <option>Semester 7</option>
+          <option>Semester 8</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" class="primary-btn">
+      <i class="fa-solid fa-floppy-disk"></i>
+      Save Profile
+    </button>
+
+    <button type="button" id="logoutBtn" class="outline-btn">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      Logout
+    </button>
+
+    <p id="profileMessage" class="form-feedback"
+       role="status"></p>
+  </form>
+</section>
+     
+
+      <section class="panel searchable extra-section" id="help">
+        <h2>Help & support</h2>
+        <p class="placeholder-text">Need help with your platform? Contact your college support team.</p>
+      </section>
+
+      <footer class="footer">
+        <p>© 2026 CampusConnect. Made for student success 💜</p>
+        <span>Learn · Connect · Grow</span>
+      </footer>
+
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
